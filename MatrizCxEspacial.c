@@ -1,3 +1,4 @@
+//definen las entradas del dip switch (5 para el control de las entradas y 3 para el control de las salidas) 
 #define E1   GPIOA_IDR.B0
 #define E2   GPIOA_IDR.B1
 #define E3   GPIOA_IDR.B2
@@ -6,6 +7,7 @@
 #define S1   GPIOA_IDR.B5
 #define S2   GPIOA_IDR.B6
 #define S3   GPIOA_IDR.B7
+//definen las salidas, los leds representan el estado de la salida: ocupado-libre
 #define L1   GPIOA_ODR.B8
 #define L2   GPIOC_ODR.B7
 #define L3   GPIOA_ODR.B10
@@ -52,7 +54,7 @@ void main(){
     for(e = 0; e<5; e++){
         if(entradas[e] == 1 && c_entradas[e] == 0){         //activa una entrada
             for (s = 0; s<3; s++){
-                if(salidas[s] == 1 && c_salidas[s] == 0){   //la entrada activada detecta la relación con una salida
+                if(salidas[s] == 1 && c_salidas[s] == 0){   //la entrada activada detecta la relaciÃ³n con una salida
                     etapa1_mat_control[e][s] = 1;
                     etapa2_mat_control[s][s] = 1;
                     c_entradas[e] = 1;
